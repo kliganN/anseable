@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  remote_user: host
+  become: true
+  tasks:
+
+  - name: remove apache2 pkg
+    apt:
+      name: apache2
+      state: absent
+      purge: true
+      autoremove: true
+
+  - name: remove php support for apache2
+    apt:
+      name: libapache2-mod-php
+      state: absent
+      purge: true
+      autoremove: true
